@@ -1,0 +1,51 @@
+SELECT * FROM WalmartSalesData LIMIT 10;
+--Select all distinct product lines:
+SELECT DISTINCT "Product line" FROM WalmartSalesData;
+--total number of sales transaction
+SELECT COUNT (*)  FROM WalmartSalesData;
+--total sales revenue
+SELECT SUM(Total) AS TotalRevenue FROM WalmartSalesData;
+--Find the total sales revenue for each branch:
+SELECT Branch, SUM(Total) AS TotalRevenue FROM WalmartSalesData GROUP BY Branch;
+--AVERAGE SALES PER TRANSACTION
+SELECT AVG(Total) AS AverageSale FROM WalmartSalesData;
+
+
+--Filtering Data
+--Find all transactions where the sales amount exceeds $500
+SELECT COUNT (*) FROM WalmartSalesData WHERE Total > 500;
+
+--Get all sales records for the product line ('Health and beauty'):
+SELECT SUM(cogs) FROM WalmartSalesData WHERE "Product line" = 'Health and beauty';
+
+
+SELECT "Product line", SUM(Total) AS TotalRevenue
+FROM WalmartSalesData
+GROUP BY "Product line"
+ORDER BY TotalRevenue DESC;
+
+--Calculate the running total of sales for each branch by date:
+SELECT Branch, Total, Date, SUM(Total) OVER (PARTITION BY Branch ORDER BY Date) as Runing_TOtal
+FROM WalmartSalesData;
+
+--Determine the month-over-month growth in sales revenue
+SELECT strftime('%Y-%m', Date) AS Month, 
+       SUM(Total) AS Revenue, 
+       LAG(SUM(Total), 1) OVER (ORDER BY strftime('%Y-%m', Date)) AS PreviousMonthRevenue, 
+       (SUM(Total) - LAG(SUM(Total), 1) OVER (ORDER BY strftime('%Y-%m', Date))) / 
+       LAG(SUM(Total), 1) OVER (ORDER BY strftime('%Y-%m', Date)) * 100 AS MonthOverMonthGrowth
+FROM WalmartSalesData
+GROUP BY strftime('%Y-%m', Date);
+
+--Identify seasonal trends in sales data:
+SELECT strftime('%m', Date) AS Month, SUM(Total) AS TotalRevenue
+FROM WalmartSalesData
+GROUP BY Month
+ORDER BY Month;
+
+
+
+
+
+
+
