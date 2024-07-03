@@ -24,11 +24,11 @@ Provide actionable insights to improve sales performance.
 
 **Sales Distribution**
 
-Sales distribution analysis indicates a significant share of revenue from Electronics, followed by Clothing and Health and Beauty. This insight can guide investment in product development and promotional activities.
+Sales distribution analysis indicates a significant share of revenue from Food and Beverages, Electronics. This insight can guide investment in product development and promotional activities.
 
 **Sales Trends**
 
-**Month-over-Month Growth**: Analyzing month-over-month growth helps identify successful periods and strategies, as well as periods needing improvement.
+**Month-over-Month Growth**: Analyzing month-over-month growth helps identify successful periods and strategies, as well as periods needing improvement. The first month (January, 2019) a total revenue of $116,292 was recorded which later dropped in February to $97,219 which later increased to $109,456 in March. It is therefore recommended that unique strategies adopted in January should be reimmplemented in subsequent months for increased revenue.
 
 **Seasonal Trends**: Understanding seasonal sales patterns assists in preparing for peak periods and optimizing stock levels to meet demand.
 
